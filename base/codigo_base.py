@@ -20,4 +20,4 @@ def iniciar_driver():
 
 driver = iniciar_driver()
 driver.get('https://youtube.com')
-input('Aperte uma tecla para sair.')
+input('Aperte uma tecla para finalizar.')
