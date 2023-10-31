@@ -6,4 +6,4 @@ driver = webdriver.Chrome(service=chromeService(ChromeDriverManager().install())
 # Navegando até um site
 driver.get("https://youtube.com")
 # Necessario fazer algo, caso contrario ele executa e fecha
-input("Aperte uma tecla para fechar;")
+input("Aperte uma tecla para fechar.")
