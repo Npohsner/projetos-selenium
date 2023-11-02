@@ -22,10 +22,13 @@ def iniciar_driver():
 driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 
-titulo = driver.find_element(By.XPATH,'//*[text()="ZONA DE TESTES"]')
+elemento_h1 = driver.find_element(By.TAG_NAME,"h1")
+elementos_h4 = driver.find_elements(By.TAG_NAME, "h4")
 
-if titulo is not None:
-    print("Achei zona de testes")
+if elemento_h1 is not None:
+    print("Achei H1")
+if elementos_h4 is not None:
+    print("Achei H4")
 
 input('')
 driver.close()
