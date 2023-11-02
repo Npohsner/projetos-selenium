@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
 def iniciar_driver():
@@ -19,5 +20,12 @@ def iniciar_driver():
     return driver
 
 driver = iniciar_driver()
-driver.get('https://youtube.com')
-input('Aperte uma tecla para finalizar.')
+driver.get('https://cursoautomacao.netlify.app/')
+
+titulo = driver.find_element(By.XPATH,'//*[text()="ZONA DE TESTES"]')
+
+if titulo is not None:
+    print("Achei zona de testes")
+
+input('')
+driver.close()
