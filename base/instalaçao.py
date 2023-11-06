@@ -1,0 +1,1 @@
+# pip install selenium import webdriver_manager ** ou ** pip install selenium webdriver-manager

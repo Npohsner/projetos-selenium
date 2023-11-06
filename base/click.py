@@ -23,9 +23,16 @@ def iniciar_driver():
 driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 
+# Temos duas maneiras de clicar, usar a que funcione melhor no caso especifico:
+
+# 1º maneira
 sleep(5)
-botao02 = driver.find_element(By.ID,"dropdownMenuButton")
-botao02.click()
+botao = driver.find_element(By.ID,"dropdownMenuButton")
+botao.click()
+
+# 2º maneira
+botao = driver.find_element(By.ID,"dropdownMenuButton")
+driver.execute_script("arguments[0].click()", botao)
 
 input('')
 driver.close()

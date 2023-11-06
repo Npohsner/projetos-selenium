@@ -21,11 +21,12 @@ def iniciar_driver():
     return driver
 
 driver = iniciar_driver()
-driver.get('https://cursoautomacao.netlify.app/')
+driver.get('https://cursoautomacao.netlify.app/desafios.html')
 
 sleep(5)
-botao02 = driver.find_element(By.ID,"dropdownMenuButton")
-botao02.click()
+driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
+sleep(5)
+driver.execute_script("window.scrollTo(0,document.body.scrollTop);")
 
 input('')
 driver.close()

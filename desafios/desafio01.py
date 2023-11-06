@@ -3,7 +3,6 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from time import sleep
 
 def iniciar_driver():
     chrome_options = Options()
@@ -21,11 +20,25 @@ def iniciar_driver():
     return driver
 
 driver = iniciar_driver()
-driver.get('https://cursoautomacao.netlify.app/')
+driver.get('https://cursoautomacao.netlify.app/desafios.html')
 
-sleep(5)
-botao02 = driver.find_element(By.ID,"dropdownMenuButton")
-botao02.click()
+botao01 = driver.find_element(By.ID,"btn1")
+if botao01.is_enabled():
+    print("Botão 1 está Habilitado")
+else:
+    print("Botão 1 está Desabilitado")
+
+botao02 = driver.find_element(By.CLASS_NAME,"btn2.btn.btn-dark")
+if botao02.is_enabled():
+    print("Botão 2 está Habilitado")
+else:
+    print("Botão 2 está Desabilitado")
+
+botao03 = driver.find_element(By.CLASS_NAME,"btn2.btn.btn-warning")
+if botao03.is_enabled():
+    print("Botão 3 está Habilitado")
+else:
+    print("Botão 3 está Desabilitado")
 
 input('')
 driver.close()
