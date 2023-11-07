@@ -23,8 +23,15 @@ def iniciar_driver():
 driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 driver.maximize_window()
-sleep(1)
-
+sleep(2)
+radio_button_windows = driver.find_element(By.ID,"WindowsRadioButton")
+radio_button_windows.click()
+sleep(2)
+radio_button_mac = driver.find_element(By.ID,"MacRadioButton")
+radio_button_mac.click()
+sleep(2)
+radio_button_linux = driver.find_element(By.ID,"LinuxRadioButton")
+radio_button_linux.click()
 
 
 input('')

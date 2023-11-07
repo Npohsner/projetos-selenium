@@ -22,10 +22,21 @@ def iniciar_driver():
 
 driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
+sleep(1)
 driver.maximize_window()
 sleep(1)
+checkbox_1 = driver.find_element(By.ID,"acessoNivel1Checkbox")
+checkbox_2 = driver.find_element(By.ID,"acessoNivel2Checkbox")
+checkbox_3 = driver.find_element(By.ID,"acessoNivel3Checkbox")
 
-
+checkbox_1.click()
+sleep(1)
+checkbox_2.click()
+sleep(1)
+if checkbox_3.is_selected() == False:
+    checkbox_3.click()
+else:
+    print("Checkbox 3 está selecionado!!!")
 
 input('')
 driver.close()

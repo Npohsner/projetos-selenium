@@ -21,11 +21,22 @@ def iniciar_driver():
     return driver
 
 driver = iniciar_driver()
-driver.get('https://cursoautomacao.netlify.app/')
-driver.maximize_window()
+driver.get('https://cursoautomacao.netlify.app/desafios.html')
 sleep(1)
+driver.maximize_window()
 
-
+sleep(1)
+nome_usuario = driver.find_element(By.ID,"dadosusuario")
+nome_usuario.send_keys("Newton Pohsner")
+sleep(1)
+clique_aqui = driver.find_element(By.ID,"desafio2")
+clique_aqui.click()
+sleep(1)
+validar_nome = driver.find_element(By.ID,"escondido")
+validar_nome.send_keys("Newton Pohsner")
+sleep(1)
+validar_campo = driver.find_element(By.ID,"validarDesafio2")
+validar_campo.click()
 
 input('')
 driver.close()

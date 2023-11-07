@@ -21,11 +21,16 @@ def iniciar_driver():
     return driver
 
 driver = iniciar_driver()
-driver.get('https://cursoautomacao.netlify.app/')
+driver.get('https://cursoautomacao.netlify.app/desafios.html')
 driver.maximize_window()
 sleep(1)
 
+checkbox_conversivel = driver.find_element(By.ID,"conversivelcheckbox")
+checkbox_Off_road = driver.find_element(By.ID,"offroadcheckbox")
 
+checkbox_conversivel.click()
+sleep(1)
+checkbox_Off_road.click()
 
 input('')
 driver.close()
