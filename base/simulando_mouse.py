@@ -24,10 +24,15 @@ def iniciar_driver():
     return driver
 
 driver = iniciar_driver()
-driver.get('https://cursoautomacao.netlify.app/')
+driver.get('https://cursoautomacao.netlify.app/exemplo_chains')
 driver.maximize_window()
 sleep(1)
-
+# Achar o botão
+clique_aqui = driver.find_element(By.ID,"botao-direito")
+# Inicializar o ActionChains
+chain = ActionChains(driver)
+# Simular click com botão direito, escolher opção usando DOWN do teclado, clicar na opção desejada.
+chain.context_click(clique_aqui).pause(1).send_keys(Keys.DOWN).pause(1).send_keys(Keys.DOWN).pause(1).send_keys(Keys.DOWN).pause(1).click().perform()
 
 
 input('')

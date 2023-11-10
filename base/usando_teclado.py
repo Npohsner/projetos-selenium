@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from time import sleep
 
 def iniciar_driver():

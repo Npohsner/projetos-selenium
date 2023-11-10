@@ -4,8 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from time import sleep
 
 def iniciar_driver():
@@ -24,11 +22,19 @@ def iniciar_driver():
     return driver
 
 driver = iniciar_driver()
-driver.get('https://cursoautomacao.netlify.app/')
+driver.get('https://cursoautomacao.netlify.app/desafios.html')
 driver.maximize_window()
+driver.execute_script("window.scrollTo(0,1800)")
+sleep(2)
+
+paises = driver.find_element(By.XPATH,"//select[@id='paisesselect']")
+opçoes = Select(paises)
+
+opçoes.select_by_value("estadosunidos")
 sleep(1)
-
-
+opçoes.select_by_value("africa")
+sleep(1)
+opçoes.select_by_value("chille")
 
 input('')
 driver.close()

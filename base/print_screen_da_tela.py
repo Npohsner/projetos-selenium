@@ -4,8 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from time import sleep
 
 def iniciar_driver():
@@ -28,7 +26,11 @@ driver.get('https://cursoautomacao.netlify.app/')
 driver.maximize_window()
 sleep(1)
 
-
+driver.save_screenshot("tela.png")
+sleep(1)
+driver.execute_script("window.scrollTo(0,1500)")
+sleep(1)
+driver.save_screenshot("tela_01.png")
 
 input('')
 driver.close()

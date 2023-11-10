@@ -4,8 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from time import sleep
 
 def iniciar_driver():
@@ -26,8 +24,16 @@ def iniciar_driver():
 driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 driver.maximize_window()
+
+paises_dropdown = driver.find_element(By.XPATH,"//select[@id='paisselect']")
+opçoes = Select(paises_dropdown)
 sleep(1)
 
+opçoes.select_by_visible_text("Canada")
+sleep(2)
+opçoes.select_by_index("0")
+sleep(2)
+opçoes.select_by_value("estadosunidos")
 
 
 input('')

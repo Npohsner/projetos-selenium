@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from time import sleep
 
 def iniciar_driver():
@@ -27,7 +26,26 @@ driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 driver.maximize_window()
 sleep(1)
-
+# Salvar janela atual numa variavel
+janela_atual = driver.current_window_handle
+# Entrar na nova janela
+driver.execute_script("window.scrollTo(0,500)")
+sleep(2)
+nova_janela = driver.find_element(By.XPATH,"//button[@class='btn btn-success']")
+nova_janela.click()
+sleep(2)
+janelas = driver.window_handles
+for janela in janelas:
+    if janela not in janela_atual:
+        driver.switch_to.window(janela)
+        pesquisa = driver.find_element(By.XPATH,"//input[@id='campo_pesquisa']")
+        pesquisa.send_keys("computador")   
+        sleep(1)
+        enter = driver.find_element(By.XPATH,"//button[@id='fazer_pesquisa']")
+        enter.click()
+        sleep(1)
+        driver.close()
+driver.switch_to.window(janela_atual)
 
 
 input('')

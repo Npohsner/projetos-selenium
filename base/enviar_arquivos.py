@@ -4,8 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from time import sleep
 
 def iniciar_driver():
@@ -27,8 +25,16 @@ driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 driver.maximize_window()
 sleep(1)
+driver.execute_script("window.scrollTo(0,2000)")
+sleep(1)
 
-
+escolher_arquivo = driver.find_element(By.XPATH,"//input[@id='myFile']")
+sleep(1)
+escolher_arquivo.send_keys("D:\\User\\Área de Trabalho\\CURSO MESTRE DA AUTOMAÇÃO\\download.png")
+sleep(1)
+enviar = driver.find_element(By.XPATH,"//input[@value='Enviar Arquivo']")
+sleep(1)
+enviar.click()
 
 input('')
 driver.close()

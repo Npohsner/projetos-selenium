@@ -3,9 +3,6 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from time import sleep
 
 def iniciar_driver():
@@ -24,9 +21,24 @@ def iniciar_driver():
     return driver
 
 driver = iniciar_driver()
-driver.get('https://cursoautomacao.netlify.app/')
+driver.get('https://cursoautomacao.netlify.app/desafios.html')
 driver.maximize_window()
 sleep(1)
+driver.execute_script("window.scrollTo(0,1500)")
+
+carros = driver.find_elements(By.XPATH,"//input[@name='carros']")
+
+carros[1].click()
+sleep(1)
+carros[3].click()
+sleep(1)
+carros[4].click()
+sleep(1)
+
+motos = driver.find_elements(By.XPATH,"//input[@name='motos']")
+for moto in motos:
+    moto.click()
+    sleep(0.5)
 
 
 

@@ -4,8 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from time import sleep
 
 def iniciar_driver():
@@ -27,8 +25,28 @@ driver = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 driver.maximize_window()
 sleep(1)
+driver.execute_script("window.scrollTo(0,1500)")
+sleep(1)
 
+# varias imagens numa mesma classe
 
+imagens = driver.find_elements(By.XPATH,"//img[@class='img-thumbnail']")
+cont = 1
+for imagem in imagens:
+    with open(f"imagem{cont}.png","wb") as arquivo:
+        arquivo.write(imagem.screenshot_as_png)
+        sleep(1)
+    cont += 1
+
+# uma imagem, vou pegar um site diferente
+
+driver.get('https://pt.wikipedia.org/wiki/Brasil')
+driver.maximize_window()
+sleep(1)
+bandeira = driver.find_element(By.XPATH,"//img[@alt='Bandeira do Brasil']")
+sleep(1)
+with open("bandeira.jpg","wb") as arquivo:
+    arquivo.write(bandeira.screenshot_as_png)
 
 input('')
 driver.close()
