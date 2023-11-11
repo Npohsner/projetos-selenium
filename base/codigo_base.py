@@ -6,6 +6,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import *
+from selenium.webdriver.support import expected_conditions as condicao_esperada
 from time import sleep
 
 def iniciar_driver():
@@ -21,9 +24,21 @@ def iniciar_driver():
     })
     driver = webdriver.Chrome(service=ChromeService(
         ChromeDriverManager().install()), options=chrome_options)
-    return driver
+    
+    wait = WebDriverWait( 
+        driver, 
+        10, 
+        poll_frequency=1, 
+        ignored_exceptions=[
+            NoSuchElementException,
+            ElementNotVisibleException,
+            ElementNotSelectableException,  
+        ]
+    )
 
-driver = iniciar_driver()
+    return driver, wait
+
+driver, wait = iniciar_driver()
 driver.get('https://cursoautomacao.netlify.app/')
 driver.maximize_window()
 sleep(1)
